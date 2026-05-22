@@ -266,3 +266,260 @@ layers:
       - Self-Optimization Agent
       - Learning Orchestrator
 ===END_FILE
+
+===FILE: manifests/agents/nonlinear/LyapunovSpectrumEngine.yaml
+name: "Lyapunov Spectrum Engine"
+role: "Compute full and local Lyapunov exponents for nonlinear dynamical systems."
+responsibilities:
+  - "Estimate global Lyapunov spectrum."
+  - "Compute finite-time Lyapunov exponents."
+  - "Support chaos detection and stability analysis."
+inputs:
+  - "Trajectory data"
+  - "Variational equations"
+  - "System parameters"
+outputs:
+  - "Full Lyapunov spectrum"
+  - "Stability classification"
+  - "Chaos indicators"
+dependencies:
+  - "Data/Observation Manifold"
+invariants:
+  - "Numerical stability must be preserved."
+  - "Exponent ordering must be monotonic."
+===END_FILE
+
+
+===FILE: manifests/agents/nonlinear/BifurcationDetector.yaml
+name: "Bifurcation Detector"
+role: "Detect regime transitions and bifurcation points."
+responsibilities:
+  - "Identify codimension-1 and codimension-2 bifurcations."
+  - "Analyze parameter sweeps for qualitative changes."
+  - "Flag transitions between stable and unstable regimes."
+inputs:
+  - "Parameter sweep data"
+  - "System response curves"
+  - "Lyapunov spectrum"
+outputs:
+  - "Bifurcation map"
+  - "Regime transition report"
+dependencies:
+  - "Lyapunov Spectrum Engine"
+invariants:
+  - "No false-positive bifurcations."
+  - "Parameter continuity must be respected."
+===END_FILE
+
+
+===FILE: manifests/agents/nonlinear/ChaosAtlasBuilder.yaml
+name: "Chaos Atlas Builder"
+role: "Construct global regime maps and attractor classifications."
+responsibilities:
+  - "Integrate stability metrics into a unified atlas."
+  - "Identify attractor families and transitions."
+  - "Generate global regime zoning."
+inputs:
+  - "Lyapunov spectrum"
+  - "Bifurcation maps"
+  - "Trajectory data"
+outputs:
+  - "Chaos atlas"
+  - "Regime zoning structure"
+dependencies:
+  - "Bifurcation Detector"
+invariants:
+  - "Regime boundaries must be consistent across scales."
+===END_FILE
+
+
+===FILE: manifests/agents/nonlinear/RegimeClassifier.yaml
+name: "Regime Classifier"
+role: "Classify system behavior into canonical regimes."
+responsibilities:
+  - "Label trajectories as laminar, periodic, quasi-periodic, or chaotic."
+  - "Use attractor geometry and Lyapunov data."
+inputs:
+  - "Chaos atlas"
+  - "Lyapunov spectrum"
+outputs:
+  - "Regime label"
+dependencies:
+  - "Chaos Atlas Builder"
+invariants:
+  - "Classification must be deterministic for identical inputs."
+===END_FILE
+
+
+===FILE: manifests/agents/nonlinear/TrajectoryStabilityAnalyzer.yaml
+name: "Trajectory Stability Analyzer"
+role: "Analyze local stability along trajectories."
+responsibilities:
+  - "Compute tangent dynamics."
+  - "Estimate finite-time stability metrics."
+inputs:
+  - "Trajectory data"
+outputs:
+  - "Local stability profile"
+dependencies:
+  - "Lyapunov Spectrum Engine"
+invariants:
+  - "Trajectory data must not be altered."
+===END_FILE
+
+
+
+# ---------------------------------------------------------------------------
+# DATA SOURCE INTELLIGENCE — ACQUISITION
+# ---------------------------------------------------------------------------
+
+===FILE: manifests/agents/data_source/acquisition/DataDiscoveryAgent.yaml
+name: "Data Discovery Agent"
+role: "Identify candidate data sources across APIs, sensors, and archives."
+responsibilities:
+  - "Scan available environments for data sources."
+  - "Evaluate source accessibility and metadata."
+inputs:
+  - "Domain specification"
+outputs:
+  - "List of candidate data sources"
+dependencies:
+  - "None"
+invariants:
+  - "Must not auto-ingest without explicit acquisition."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/DataAcquisitionAgent.yaml
+name: "Data Acquisition Agent"
+role: "Retrieve data from selected sources with full provenance."
+responsibilities:
+  - "Perform data pulls from approved sources."
+  - "Capture acquisition metadata."
+inputs:
+  - "Source descriptor"
+outputs:
+  - "Raw dataset"
+  - "Acquisition metadata"
+dependencies:
+  - "Data Discovery Agent"
+invariants:
+  - "Acquisition must be lossless."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/SensorIntegrationAgent.yaml
+name: "Sensor Integration Agent"
+role: "Interface with physical sensors and telemetry streams."
+responsibilities:
+  - "Ingest real-time sensor data."
+  - "Apply calibration and timestamp preservation."
+inputs:
+  - "Sensor feed"
+outputs:
+  - "Sensor dataset"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "Timestamps must be preserved exactly."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/APIStreamConnectorAgent.yaml
+name: "API & Stream Connector Agent"
+role: "Connect to APIs and streaming data sources."
+responsibilities:
+  - "Handle rate limits and schema extraction."
+  - "Maintain stable ingestion pipelines."
+inputs:
+  - "API endpoint"
+outputs:
+  - "Streamed dataset"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "Schema must not be mutated."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/DataLicensingPermissionAgent.yaml
+name: "Data Licensing & Permission Agent"
+role: "Validate legal and ethical access to data sources."
+responsibilities:
+  - "Check licensing terms."
+  - "Enforce compliance constraints."
+inputs:
+  - "Source metadata"
+outputs:
+  - "Access approval or denial"
+dependencies:
+  - "Data Discovery Agent"
+invariants:
+  - "Compliance must be strictly enforced."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/AcquisitionProvenanceAgent.yaml
+name: "Acquisition Provenance Agent"
+role: "Record full acquisition lineage."
+responsibilities:
+  - "Track timestamps, transformations, and origin."
+inputs:
+  - "Raw dataset"
+outputs:
+  - "Provenance record"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "Provenance must be immutable."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/AcquisitionIntegrityAgent.yaml
+name: "Acquisition Integrity Agent"
+role: "Validate correctness and completeness of acquired data."
+responsibilities:
+  - "Detect corruption or missing segments."
+inputs:
+  - "Raw dataset"
+outputs:
+  - "Integrity score"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "No silent corruption allowed."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/SamplingStrategyAgent.yaml
+name: "Sampling Strategy Agent"
+role: "Determine sampling frequency, resolution, and coverage."
+responsibilities:
+  - "Generate sampling plans."
+  - "Avoid aliasing and undersampling."
+inputs:
+  - "Domain specification"
+outputs:
+  - "Sampling plan"
+dependencies:
+  - "Data Discovery Agent"
+invariants:
+  - "Sampling must avoid aliasing artifacts."
+===END_FILE
+
+
+===FILE: manifests/agents/data_source/acquisition/AcquisitionOrchestrator.yaml
+name: "Acquisition Orchestrator"
+role: "Coordinate all acquisition agents into a unified pipeline."
+responsibilities:
+  - "Manage acquisition workflow."
+  - "Ensure deterministic ordering."
+inputs:
+  - "Acquisition request"
+outputs:
+  - "Fully acquired dataset"
+dependencies:
+  - "All acquisition agents"
+invariants:
+  - "Pipeline execution must be deterministic."
+===END_FILE

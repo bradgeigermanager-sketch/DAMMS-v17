@@ -1,0 +1,12 @@
+name: "Acquisition Integrity Agent"
+role: "Validate correctness and completeness of acquired data."
+responsibilities:
+  - "Detect corruption or missing segments."
+inputs:
+  - "Raw dataset"
+outputs:
+  - "Integrity score"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "No silent corruption allowed."

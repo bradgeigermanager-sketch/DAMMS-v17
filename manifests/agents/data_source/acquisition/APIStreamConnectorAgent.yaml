@@ -1,0 +1,13 @@
+name: "API & Stream Connector Agent"
+role: "Connect to APIs and streaming data sources."
+responsibilities:
+  - "Handle rate limits and schema extraction."
+  - "Maintain stable ingestion pipelines."
+inputs:
+  - "API endpoint"
+outputs:
+  - "Streamed dataset"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "Schema must not be mutated."

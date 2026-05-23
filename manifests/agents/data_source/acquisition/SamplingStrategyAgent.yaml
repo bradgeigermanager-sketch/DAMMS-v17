@@ -1,0 +1,13 @@
+name: "Sampling Strategy Agent"
+role: "Determine sampling frequency, resolution, and coverage."
+responsibilities:
+  - "Generate sampling plans."
+  - "Avoid aliasing and undersampling."
+inputs:
+  - "Domain specification"
+outputs:
+  - "Sampling plan"
+dependencies:
+  - "Data Discovery Agent"
+invariants:
+  - "Sampling must avoid aliasing artifacts."

@@ -1,0 +1,13 @@
+name: "Acquisition Orchestrator"
+role: "Coordinate all acquisition agents into a unified pipeline."
+responsibilities:
+  - "Manage acquisition workflow."
+  - "Ensure deterministic ordering."
+inputs:
+  - "Acquisition request"
+outputs:
+  - "Fully acquired dataset"
+dependencies:
+  - "All acquisition agents"
+invariants:
+  - "Pipeline execution must be deterministic."

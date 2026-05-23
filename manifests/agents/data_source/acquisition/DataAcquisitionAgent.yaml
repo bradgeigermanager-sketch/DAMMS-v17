@@ -1,0 +1,14 @@
+name: "Data Acquisition Agent"
+role: "Retrieve data from selected sources with full provenance."
+responsibilities:
+  - "Perform data pulls from approved sources."
+  - "Capture acquisition metadata."
+inputs:
+  - "Source descriptor"
+outputs:
+  - "Raw dataset"
+  - "Acquisition metadata"
+dependencies:
+  - "Data Discovery Agent"
+invariants:
+  - "Acquisition must be lossless."

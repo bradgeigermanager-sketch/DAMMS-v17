@@ -1,0 +1,13 @@
+name: "Data Discovery Agent"
+role: "Identify candidate data sources across APIs, sensors, and archives."
+responsibilities:
+  - "Scan available environments for data sources."
+  - "Evaluate source accessibility and metadata."
+inputs:
+  - "Domain specification"
+outputs:
+  - "List of candidate data sources"
+dependencies:
+  - "None"
+invariants:
+  - "Must not auto-ingest without explicit acquisition."

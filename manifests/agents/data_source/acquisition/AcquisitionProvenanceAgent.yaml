@@ -1,0 +1,12 @@
+name: "Acquisition Provenance Agent"
+role: "Record full acquisition lineage."
+responsibilities:
+  - "Track timestamps, transformations, and origin."
+inputs:
+  - "Raw dataset"
+outputs:
+  - "Provenance record"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "Provenance must be immutable."

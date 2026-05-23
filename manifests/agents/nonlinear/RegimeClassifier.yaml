@@ -1,0 +1,14 @@
+name: "Regime Classifier"
+role: "Classify system behavior into canonical regimes."
+responsibilities:
+  - "Label trajectories as laminar, periodic, quasi-periodic, or chaotic."
+  - "Use attractor geometry and Lyapunov data."
+inputs:
+  - "Chaos atlas"
+  - "Lyapunov spectrum"
+outputs:
+  - "Regime label"
+dependencies:
+  - "Chaos Atlas Builder"
+invariants:
+  - "Classification must be deterministic for identical inputs."

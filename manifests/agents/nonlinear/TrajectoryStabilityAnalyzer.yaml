@@ -1,0 +1,13 @@
+name: "Trajectory Stability Analyzer"
+role: "Analyze local stability along trajectories."
+responsibilities:
+  - "Compute tangent dynamics."
+  - "Estimate finite-time stability metrics."
+inputs:
+  - "Trajectory data"
+outputs:
+  - "Local stability profile"
+dependencies:
+  - "Lyapunov Spectrum Engine"
+invariants:
+  - "Trajectory data must not be altered."

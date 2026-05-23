@@ -1,0 +1,17 @@
+name: "Chaos Atlas Builder"
+role: "Construct global regime maps and attractor classifications."
+responsibilities:
+  - "Integrate stability metrics into a unified atlas."
+  - "Identify attractor families and transitions."
+  - "Generate global regime zoning."
+inputs:
+  - "Lyapunov spectrum"
+  - "Bifurcation maps"
+  - "Trajectory data"
+outputs:
+  - "Chaos atlas"
+  - "Regime zoning structure"
+dependencies:
+  - "Bifurcation Detector"
+invariants:
+  - "Regime boundaries must be consistent across scales."

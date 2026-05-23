@@ -1,0 +1,13 @@
+name: "Sensor Integration Agent"
+role: "Interface with physical sensors and telemetry streams."
+responsibilities:
+  - "Ingest real-time sensor data."
+  - "Apply calibration and timestamp preservation."
+inputs:
+  - "Sensor feed"
+outputs:
+  - "Sensor dataset"
+dependencies:
+  - "Data Acquisition Agent"
+invariants:
+  - "Timestamps must be preserved exactly."

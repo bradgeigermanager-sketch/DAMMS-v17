@@ -1,0 +1,19 @@
+name: "Lyapunov Spectrum Engine"
+role: "Compute full and local Lyapunov exponents for nonlinear dynamical systems."
+responsibilities:
+  - "Estimate global Lyapunov spectrum."
+  - "Compute finite-time Lyapunov exponents."
+  - "Support chaos detection and stability analysis."
+inputs:
+  - "Trajectory data"
+  - "Variational equations"
+  - "System parameters"
+outputs:
+  - "Full Lyapunov spectrum"
+  - "Stability classification"
+  - "Chaos indicators"
+dependencies:
+  - "Data/Observation Manifold"
+invariants:
+  - "Numerical stability must be preserved."
+  - "Exponent ordering must be monotonic."

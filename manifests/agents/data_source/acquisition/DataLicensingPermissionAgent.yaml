@@ -1,0 +1,13 @@
+name: "Data Licensing & Permission Agent"
+role: "Validate legal and ethical access to data sources."
+responsibilities:
+  - "Check licensing terms."
+  - "Enforce compliance constraints."
+inputs:
+  - "Source metadata"
+outputs:
+  - "Access approval or denial"
+dependencies:
+  - "Data Discovery Agent"
+invariants:
+  - "Compliance must be strictly enforced."

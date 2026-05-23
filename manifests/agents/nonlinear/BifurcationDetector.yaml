@@ -1,0 +1,18 @@
+name: "Bifurcation Detector"
+role: "Detect regime transitions and bifurcation points."
+responsibilities:
+  - "Identify codimension-1 and codimension-2 bifurcations."
+  - "Analyze parameter sweeps for qualitative changes."
+  - "Flag transitions between stable and unstable regimes."
+inputs:
+  - "Parameter sweep data"
+  - "System response curves"
+  - "Lyapunov spectrum"
+outputs:
+  - "Bifurcation map"
+  - "Regime transition report"
+dependencies:
+  - "Lyapunov Spectrum Engine"
+invariants:
+  - "No false-positive bifurcations."
+  - "Parameter continuity must be respected."
